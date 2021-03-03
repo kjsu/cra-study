@@ -1,6 +1,6 @@
 import React from 'react'
 import './App.css';
-import Toc from './Toc'
+import Toc from './components/Toc'
 
 class App extends React.Component {
   render() {
