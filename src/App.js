@@ -1,5 +1,6 @@
 import React from 'react'
 import './App.css';
+import Subject from './components/Subject'
 import Toc from './components/Toc'
 
 class App extends React.Component {
@@ -18,10 +19,10 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        {/* <Subject
+        <Subject
           title = {this.state.subject.title}
           sub = {this.state.subject.sub}>
-        </Subject> */}
+        </Subject>
         <Toc data={this.state.contents}></Toc>
         {/* <Content title="Html" desc="Html is ..."></Content> */}
       </div>
