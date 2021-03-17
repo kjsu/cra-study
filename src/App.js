@@ -6,14 +6,24 @@ class App extends React.Component {
   constructor(props){
     super(props);
     this.state = {
-      toc:{title:"Hello", desc:"World"}
+      subject:{title:"Web", sub:"World Wide Web!"},
+      contents:[
+        {id:1, title:"Html", desc:"Html is ..."},
+        {id:2, title:"CSS", desc:"CSS is ..."},
+        {id:3, title:"JavaScript", desc:"JS is ..."},
+      ]
     }
   }
 
   render() {
     return (
       <div className="App">
-        <Toc title={this.state.toc.title} desc={this.state.toc.desc}></Toc>
+        {/* <Subject
+          title = {this.state.subject.title}
+          sub = {this.state.subject.sub}>
+        </Subject> */}
+        <Toc data={this.state.contents}></Toc>
+        {/* <Content title="Html" desc="Html is ..."></Content> */}
       </div>
     );
   }
