@@ -7,7 +7,7 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      mode:'welcome',
+      mode:'reading',
       subject:{title:"Web", sub:"World Wide Web!"},
       welcome:{title:'welcome', desc:'hello react'},
       contents:[
@@ -19,11 +19,21 @@ class App extends Component {
   }
 
   render() {
+    var _title, _desc;
+
+    if (this.state.mode === 'welcome'){
+      _title = this.state.welcome.title;
+      _desc = this.state.welcome.desc;
+    } else if (this.state.mode === 'reading'){
+      _title = this.state.contents[0].title;
+      _desc = this.state.contents[0].desc;
+    }
+
     return (
       <div className="App">
         <Subject
-          title = {this.state.subject.title}
-          sub = {this.state.subject.sub}>
+          title = {_title}
+          sub = {_desc}>
         </Subject>
         <Toc data={this.state.contents}></Toc>
         {/* <Content title="Html" desc="Html is ..."></Content> */}
