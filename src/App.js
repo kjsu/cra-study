@@ -33,9 +33,11 @@ class App extends Component {
       <div className="App">
         <header>
             <h1><a href="/" onClick={function(e){
-              alert('hi');
+              this.setState({
+                mode : 'welcome'
+              });
               e.preventDefault();
-            }}>{_title}</a></h1>
+            }.bind(this)}>{_title}</a></h1>
             {_desc}
         </header>
         {/* <Subject
