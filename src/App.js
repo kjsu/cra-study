@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import './App.css';
 import Subject from './components/Subject'
+import Menu from './components/Menu'
 import Toc from './components/Toc'
 
 class App extends Component {
@@ -44,6 +45,7 @@ class App extends Component {
           title = {_title}
           sub = {_desc}>
         </Subject> */}
+        <Menu></Menu>
         <Toc data={this.state.contents}></Toc>
         {/* <Content title="Html" desc="Html is ..."></Content> */}
       </div>
