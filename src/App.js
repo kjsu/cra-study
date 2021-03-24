@@ -3,6 +3,7 @@ import './App.css';
 import Subject from './components/Subject'
 import Menu from './components/Menu'
 import Toc from './components/Toc'
+import ReadArticle from './components/ReadArticle'
 
 class App extends Component {
   constructor(props){
@@ -47,7 +48,7 @@ class App extends Component {
         </Subject> */}
         <Menu></Menu>
         <Toc data={this.state.contents}></Toc>
-        {/* <Content title="Html" desc="Html is ..."></Content> */}
+        <ReadArticle data={this.state.contents}></ReadArticle>
       </div>
     );
   }
