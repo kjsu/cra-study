@@ -10,6 +10,7 @@ class App extends Component {
     super(props);
     this.state = {
       mode:'welcome',
+      selected_content_id:2,
       subject:{title:"Web", sub:"World Wide Web!"},
       welcome:{title:'welcome', desc:'hello react'},
       contents:[
@@ -27,8 +28,16 @@ class App extends Component {
       _title = this.state.welcome.title;
       _desc = this.state.welcome.desc;
     } else if (this.state.mode === 'read'){
-      _title = this.state.contents[0].title;
-      _desc = this.state.contents[0].desc;
+      var i = 0;
+      while(i < this.state.contents.length){
+        var data = this.state.contents[i];
+        if (data.id === this.state.selected_content_id) {
+          _title = data.title;
+          _desc = data.desc;
+          break;
+        }
+        i = i + 1;
+      }
     }
 
     return (
@@ -44,7 +53,12 @@ class App extends Component {
           }>
         </Subject>
         <Menu></Menu>
-        <Toc data={this.state.contents}></Toc>
+        <Toc onChangePage={function(id){
+          this.setState({
+            mode : 'read',
+            selected_content_id : Number(id)
+          })
+        }.bind(this)} data={this.state.contents}></Toc>
         <ReadArticle data={this.state.contents}></ReadArticle>
         <Content title={_title} desc={_desc}></Content>
       </div>
