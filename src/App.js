@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Subject from './components/Subject'
 import Menu from './components/Menu'
 import Toc from './components/Toc'
+import Content from './components/Content'
 import ReadArticle from './components/ReadArticle'
 
 class App extends Component {
@@ -48,6 +49,7 @@ class App extends Component {
         <Menu></Menu>
         <Toc data={this.state.contents}></Toc>
         <ReadArticle data={this.state.contents}></ReadArticle>
+        <Content></Content>
       </div>
     );
   }
