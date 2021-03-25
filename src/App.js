@@ -9,7 +9,7 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      mode:'reading',
+      mode:'welcome',
       subject:{title:"Web", sub:"World Wide Web!"},
       welcome:{title:'welcome', desc:'hello react'},
       contents:[
@@ -21,35 +21,32 @@ class App extends Component {
   }
 
   render() {
-    var _title, _desc;
+    var _title, _desc = null;
 
     if (this.state.mode === 'welcome'){
       _title = this.state.welcome.title;
       _desc = this.state.welcome.desc;
-    } else if (this.state.mode === 'reading'){
+    } else if (this.state.mode === 'read'){
       _title = this.state.contents[0].title;
       _desc = this.state.contents[0].desc;
     }
 
     return (
       <div className="App">
-        <header>
-            <h1><a href="/" onClick={function(e){
+        <Subject
+          title = {this.state.subject.title}
+          sub = {this.state.subject.sub}
+          onChangePage = {function(_mode){
               this.setState({
-                mode : 'welcome'
+                mode : _mode
               });
-              e.preventDefault();
-            }.bind(this)}>{_title}</a></h1>
-            {_desc}
-        </header>
-        {/* <Subject
-          title = {_title}
-          sub = {_desc}>
-        </Subject> */}
+            }.bind(this)
+          }>
+        </Subject>
         <Menu></Menu>
         <Toc data={this.state.contents}></Toc>
         <ReadArticle data={this.state.contents}></ReadArticle>
-        <Content></Content>
+        <Content title={_title} desc={_desc}></Content>
       </div>
     );
   }
