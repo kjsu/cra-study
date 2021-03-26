@@ -2,8 +2,7 @@ import React, { Component } from 'react'
 import Subject from './components/Subject'
 import Control from './components/Control'
 import Toc from './components/Toc'
-import Content from './components/Content'
-import ReadArticle from './components/ReadArticle'
+import ReadContent from './components/ReadContent'
 
 class App extends Component {
   constructor(props){
@@ -63,8 +62,7 @@ class App extends Component {
             mode:mode
           })
         }.bind(this)}></Control>
-        <ReadArticle data={this.state.contents}></ReadArticle>
-        <Content title={_title} desc={_desc}></Content>
+        <ReadContent title={_title} desc={_desc}></ReadContent>
       </div>
     );
   }
