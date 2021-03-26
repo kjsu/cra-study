@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Subject from './components/Subject'
-import Menu from './components/Menu'
+import Control from './components/Control'
 import Toc from './components/Toc'
 import Content from './components/Content'
 import ReadArticle from './components/ReadArticle'
@@ -52,13 +52,17 @@ class App extends Component {
             }.bind(this)
           }>
         </Subject>
-        <Menu></Menu>
         <Toc onChangePage={function(id){
           this.setState({
             mode : 'read',
             selected_content_id : Number(id)
           })
         }.bind(this)} data={this.state.contents}></Toc>
+        <Control onChangeMode={function(mode){
+          this.setState({
+            mode:mode
+          })
+        }.bind(this)}></Control>
         <ReadArticle data={this.state.contents}></ReadArticle>
         <Content title={_title} desc={_desc}></Content>
       </div>
