@@ -11,7 +11,7 @@ class App extends Component {
     super(props);
     this.max_content_id = 3;
     this.state = {
-      mode:'create',
+      mode:'welcome',
       selected_content_id:2,
       subject:{title:"Web", sub:"World Wide Web!"},
       welcome:{title:'welcome', desc:'hello react'},
@@ -99,9 +99,28 @@ class App extends Component {
           })
         }.bind(this)} data={this.state.contents}></Toc>
         <Control onChangeMode={function(mode){
-          this.setState({
-            mode:mode
-          })
+          if(mode === 'delete'){
+            if(window.confirm('really?')){
+              var i = 0;
+              var _contents = Array.from(this.state.contents);
+              while(i < _contents.length){
+                if(_contents[i].id === this.state.selected_content_id){
+                  _contents.splice(i, 1);
+                  break;
+                }
+                i = i + 1;
+              }
+              this.setState({
+                contents:_contents,
+                mode:'welcome'
+              })
+            }
+          } else {
+            this.setState({
+              mode:mode
+            })
+          }
+
         }.bind(this)}></Control>
         {this.getContent()}
       </div>
